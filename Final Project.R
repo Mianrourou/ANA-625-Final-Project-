@@ -24,6 +24,15 @@ class(CableTVSubscribersData$subscribe)
 class(CableTVSubscribersData$income)
 class(CableTVSubscribersData$kids)
 class(CableTVSubscribersData$ownHome)
+#attach(can use variables without data$variable)
+attach(CableTVSubscribersData)
+#levels
+levels(age)
+levels(Segment)
+levels(subscribe)
+levels(income)
+levels(kids)
+levels(ownHome)
 #checking missing values
 is.na(CableTVSubscribersData)
 #making variable as factor if R does not recongnize it as factor
@@ -32,5 +41,14 @@ as.factor(CableTVSubscribersData$gender)
 #delet entire row of missing values(however, we dont have any missing values for this data)
 # ----na.omit()----
 #logistic regression
-glm(subscribe~age+gender+income+kids+ownHome+Segment,data=CableTVSubscribersData,family=binomial)
+model=glm(subscribe~age+gender+income+kids+ownHome+Segment,data=CableTVSubscribersData,family=binomial)
+#check model
+model
+#summary of model
+summary(model)
+
+#plot for each categori level
+#adjusted line for each categori level
+abline()
 #review chapter 2 for EDA parts
+
